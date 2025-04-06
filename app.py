@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
 
-df = pd.read_csv('C:/Users/pedro/OneDrive/Área de Trabalho/girovo/dash/education_career_success.csv')
+df = pd.read_csv('./education_career_success.csv')
 
 app = Dash(__name__, external_stylesheets=['https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/cyborg/bootstrap.min.css'])
 
