@@ -1,0 +1,57 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data = pd.read_csv('./education_career_success.csv')
+
+data.head()
+
+data.info()
+
+data.isna().sum()
+
+data.describe()
+
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=data, x='SAT_Score', y='Starting_Salary', hue='Gender', palette='viridis')
+plt.title('SAT Score vs Salário Inicial')
+plt.xlabel('SAT Score')
+plt.ylabel('Salário Inicial')
+plt.legend(title='Gênero')
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.show()
+
+
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=data, x='Current_Job_Level', y='Career_Satisfaction', palette='coolwarm')
+plt.title('Satisfação na Carreira por Nível de Cargo')
+plt.xlabel('Nível de Cargo')
+plt.ylabel('Satisfação na Carreira')
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=data, x='University_GPA', y='Job_Offers', hue='Gender', palette='viridis')
+plt.title('Notas vs Ofertas de Emprego')
+plt.xlabel('Média Universitária (GPA)')
+plt.ylabel('Ofertas de Emprego')
+plt.legend(title='Gênero')
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.show()
+
+
+plt.figure(figsize=(10, 6))
+sns.histplot(data=data, x='SAT_Score', bins=20, kde=True, color='blue')
+plt.title('Distribuição de SAT Score')
+plt.xlabel('SAT Score')
+plt.ylabel('Frequência')
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.show()
+
+df_entrepreneurship = data['Entrepreneurship'].value_counts()
+plt.figure(figsize=(8, 8))
+plt.pie(df_entrepreneurship, labels=df_entrepreneurship.index, autopct='%1.1f%%', startangle=140, colors=sns.color_palette('pastel'))
+plt.title('Proporção de Empreendedores')
+plt.show()
